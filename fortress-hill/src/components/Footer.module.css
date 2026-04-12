@@ -1,0 +1,55 @@
+.footer {
+  background-color: var(--g-color-base-misc-heavy-solid);
+  padding: 64px 24px 24px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.colTitle {
+  margin-bottom: 20px !important;
+  display: block;
+}
+
+.contactRow {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 12px;
+  opacity: 0.6;
+  display: block;
+}
+
+.workHours {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.detailRow {
+  margin-bottom: 10px;
+}
+
+.copyright {
+  text-align: center;
+  opacity: 0.5;
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

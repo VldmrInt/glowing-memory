@@ -1,0 +1,28 @@
+.hero {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--g-color-base-background) 0%,
+    var(--g-color-base-generic) 100%
+  );
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 24px !important;
+  display: block;
+}
+
+.subtitle {
+  margin-bottom: 40px !important;
+  display: block;
+}

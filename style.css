@@ -257,7 +257,7 @@ p {
    ============================================ */
 
 .hero {
-    min-h-[100dvh];
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     padding: var(--spacing-3xl) 0;
@@ -352,7 +352,7 @@ p {
     }
 
     .hero {
-        min-h: auto;
+        min-height: auto;
         padding: var(--spacing-xl) 0;
     }
 

@@ -1,200 +1,214 @@
-// Mobile Menu Toggle
+// ============================================
+// FORTRESS HILL — main.js
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    initMobileMenu();
+    initContactForm();
+    initSmoothScroll();
+    initScrollAnimations();
+    initNavbarScroll();
+    initPhoneInput();
+});
+
+// ============================================
+// Mobile Menu
+// ============================================
+
+function initMobileMenu() {
+    const btn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            if (navLinks) {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            }
-        });
+    if (!btn || !navLinks) return;
 
-        // Close menu when clicking on a link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                if (navLinks) {
-                    navLinks.style.display = 'none';
-                }
-            });
-        });
+    btn.addEventListener('click', () => {
+        const isOpen = btn.classList.toggle('active');
+        navLinks.classList.toggle('is-open', isOpen);
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        btn.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close on backdrop click (clicking outside)
+    navLinks.addEventListener('click', (e) => {
+        if (e.target === navLinks) closeMenu();
+    });
+
+    function closeMenu() {
+        btn.classList.remove('active');
+        navLinks.classList.remove('is-open');
+        document.body.style.overflow = '';
+        btn.setAttribute('aria-expanded', 'false');
     }
+}
 
-    // Contact Form Handler
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
+// ============================================
+// Smooth Scroll
+// ============================================
 
-    // Smooth scroll for anchor links
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== '#' && document.querySelector(href)) {
+            const target = href !== '#' && document.querySelector(href);
+            if (target) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 64;
+                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({ top, behavior: 'smooth' });
             }
         });
     });
+}
 
-    // Intersection Observer for fade-in animations
-    observeElementsOnScroll();
-});
+// ============================================
+// Scroll Animations
+// ============================================
 
-/**
- * Handle contact form submission
- */
-function handleFormSubmit(e) {
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                // Stagger siblings in the same parent
+                const siblings = [...entry.target.parentElement.querySelectorAll('.anim-ready')];
+                const idx = siblings.indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, idx * 60);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.service-card, .portfolio-card, .tech-badge, .tech-category').forEach(el => {
+        el.classList.add('anim-ready');
+        observer.observe(el);
+    });
+}
+
+// ============================================
+// Navbar Scroll Effect
+// ============================================
+
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const onScroll = () => {
+        navbar.style.boxShadow = window.scrollY > 40
+            ? '0 4px 24px rgba(0,0,0,0.3)'
+            : 'none';
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+// ============================================
+// Contact Form
+// ============================================
+
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', handleFormSubmit);
+}
+
+async function handleFormSubmit(e) {
     e.preventDefault();
 
     const form = e.target;
     const formMessage = document.getElementById('formMessage');
     const submitBtn = form.querySelector('button[type="submit"]');
 
-    // Validate form
     if (!form.checkValidity()) {
         form.reportValidity();
         return;
     }
 
-    // Disable submit button
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Отправка...';
 
-    // Collect form data
     const formData = new FormData(form);
     const data = {
         name: formData.get('name'),
         phone: formData.get('phone'),
         email: formData.get('email'),
-        message: formData.get('message'),
-        timestamp: new Date().toISOString()
+        message: formData.get('message')
     };
 
-    // Simulate form submission (in real scenario, send to server)
-    setTimeout(() => {
-        // Success message
+    try {
+        const response = await fetch('/api/applications', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        if (!response.ok || !result.ok) {
+            throw new Error(result.error || 'Ошибка отправки');
+        }
+
         showFormMessage(formMessage, 'Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
-
-        // Reset form
         form.reset();
-
-        // Re-enable submit button
+        setTimeout(() => {
+            if (formMessage) formMessage.style.display = 'none';
+        }, 6000);
+    } catch (error) {
+        showFormMessage(formMessage, 'Не удалось отправить заявку. Попробуйте еще раз.', 'error');
+    } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-
-        // Log data (in real scenario, send to server)
-        console.log('Form data:', data);
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }, 800);
+    }
 }
 
-/**
- * Show form message
- */
 function showFormMessage(element, message, type) {
+    if (!element) return;
     element.textContent = message;
     element.className = `form-message ${type}`;
     element.style.display = 'block';
 }
 
-/**
- * Observe elements for scroll animations
- */
-function observeElementsOnScroll() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+// ============================================
+// Phone Input
+// ============================================
 
-    // Observe service cards, portfolio cards, tech badges
-    document.querySelectorAll('.service-card, .portfolio-card, .tech-badge').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+function initPhoneInput() {
+    const phoneInput = document.getElementById('phone');
+    if (!phoneInput) return;
+
+    phoneInput.addEventListener('input', () => formatPhoneNumber(phoneInput));
+
+    phoneInput.addEventListener('keydown', (e) => {
+        const allowed = [46, 8, 9, 27, 13];
+        const isCtrl = e.ctrlKey || e.metaKey;
+        const isCtrlKey = isCtrl && [65, 67, 86, 88].includes(e.keyCode);
+        const isNumpad = e.keyCode >= 96 && e.keyCode <= 105;
+        const isDigit = !e.shiftKey && e.keyCode >= 48 && e.keyCode <= 57;
+
+        if (allowed.includes(e.keyCode) || isCtrlKey || isNumpad || isDigit) return;
+        e.preventDefault();
     });
 }
 
-/**
- * Phone number formatting
- */
 function formatPhoneNumber(input) {
-    let value = input.value.replace(/\D/g, '');
+    const digits = input.value.replace(/\D/g, '');
+    if (!digits) { input.value = ''; return; }
 
-    if (value.length > 0) {
-        if (value.length <= 1) {
-            value = '+7 (' + value;
-        } else if (value.length <= 4) {
-            value = '+7 (' + value.slice(1, 4) + ')';
-        } else if (value.length <= 7) {
-            value = '+7 (' + value.slice(1, 4) + ') ' + value.slice(4);
-        } else {
-            value = '+7 (' + value.slice(1, 4) + ') ' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
-        }
-    }
+    const d = digits.startsWith('7') || digits.startsWith('8') ? digits.slice(1) : digits;
 
-    input.value = value;
+    let formatted = '+7';
+    if (d.length > 0) formatted += ' (' + d.slice(0, 3);
+    if (d.length >= 3) formatted += ') ' + d.slice(3, 6);
+    if (d.length >= 6) formatted += '-' + d.slice(6, 8);
+    if (d.length >= 8) formatted += '-' + d.slice(8, 10);
+
+    input.value = formatted;
 }
-
-// Apply phone formatting on phone input
-const phoneInput = document.getElementById('phone');
-if (phoneInput) {
-    phoneInput.addEventListener('input', function() {
-        formatPhoneNumber(this);
-    });
-
-    phoneInput.addEventListener('keydown', function(e) {
-        // Allow: backspace, delete, tab, escape, enter
-        if ([46, 8, 9, 27, 13, 110, 190].indexOf(e.keyCode) !== -1 ||
-            // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Cmd+A, Cmd+C, Cmd+V, Cmd+X
-            (e.keyCode === 65 && e.ctrlKey === true) ||
-            (e.keyCode === 67 && e.ctrlKey === true) ||
-            (e.keyCode === 86 && e.ctrlKey === true) ||
-            (e.keyCode === 88 && e.ctrlKey === true) ||
-            (e.keyCode === 65 && e.metaKey === true) ||
-            (e.keyCode === 67 && e.metaKey === true) ||
-            (e.keyCode === 86 && e.metaKey === true) ||
-            (e.keyCode === 88 && e.metaKey === true)) {
-            return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-}
-
-/**
- * Navbar scroll effect
- */
-function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    const scrollPosition = window.scrollY;
-
-    if (scrollPosition > 50) {
-        navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
-}
-
-window.addEventListener('scroll', handleNavbarScroll);

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФОРТРЕСС ХИЛЛ — Разработка e-commerce проектов</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <span class="logo-mark">FH</span>
+                    <span class="logo-text">Fortress Hill</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#tech">Технологии</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#contact" class="nav-cta">Связаться</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Мы создаём
+                        <span class="highlight">e-commerce</span>
+                        <span class="highlight-secondary">проекты</span>
+                        которые работают
+                    </h1>
+                    <p class="hero-subtitle">
+                        Полный цикл разработки веб-приложений для российского рынка. От идеи до продакшена.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#services" class="button button-primary">
+                            Наши услуги
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
+                                <path d="M8 12h8m0 0l-4-4m4 4l-4 4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Услуги</h2>
+                <p class="section-subtitle">Основное направление — разработка веб-программного обеспечения для<br>
+                    e-commerce, маркетплейсов и сервисов.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card service-card-featured">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 18h24M12 27h24M12 36h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Разработка веб-ПО</h3>
+                    <p class="service-description">
+                        Полнофункциональные веб-приложения с использованием современных технологий и лучших практик.
+                    </p>
+                    <div class="service-price">от 1000 ₽</div>
+                    <a href="#contact" class="service-link">Подробнее →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="14" y="6" width="20" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="24" cy="38" r="1.5" fill="currentColor"/>
+                            <path d="M16 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Мобильные приложения</h3>
+                    <p class="service-description">
+                        Встречайте вашу аудиторию на мобильных устройствах с нативными или кроссплатформенными решениями.
+                    </p>
+                    <div class="service-price">от 1000 ₽</div>
+                    <a href="#contact" class="service-link">Подробнее →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M18 10l-2 4h-4l3 2-1 4 3-2 3 2-1-4 3-2h-4l-2-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M36 24l-3 6h-6l5 3-2 6 5-3 5 3-2-6 5-3h-6l-3-6zm-18 0H8l5 3-2 6 5-3 5 3-2-6 5-3h-6l-3-6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Техническая поддержка</h3>
+                    <p class="service-description">
+                        Надежное сопровождение и поддержка ваших приложений 24/7. Быстрое решение проблем.
+                    </p>
+                    <div class="service-price">от 500 ₽</div>
+                    <a href="#contact" class="service-link">Подробнее →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect x="8" y="12" width="32" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="20" r="2.5" fill="currentColor"/>
+                            <path d="M32 28l-6-4-6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">UX/UI дизайн</h3>
+                    <p class="service-description">
+                        Красивые и удобные интерфейсы, созданные на основе анализа поведения пользователей.
+                    </p>
+                    <div class="service-price">от 850 ₽</div>
+                    <a href="#contact" class="service-link">Подробнее →</a>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <a href="#contact" class="button button-primary button-large">
+                    Начать проект
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="tech-section" id="tech">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Технологический стек</h2>
+                <p class="section-subtitle">Современные инструменты для создания масштабируемых решений</p>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Фронтенд</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">Next.js</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Бэкенд</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">Yii</span>
+                        <span class="tech-badge">Yii2</span>
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">DevOps & Инфраструктура</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Мобильная разработка</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Kotlin</span>
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">Android</span>
+                        <span class="tech-badge">Swift</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">AI</h3>
+                    <div class="tech-badges">
+                        <span class="tech-badge">OpenAI Codex</span>
+                        <span class="tech-badge">Claude Code</span>
+                        <span class="tech-badge">xAI</span>
+                        <span class="tech-badge">GigaChat</span>
+                        <span class="tech-badge">Grok</span>
+                        <span class="tech-badge">Perplexity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Портфолио</h2>
+                <p class="section-subtitle">Проекты, на которые мы гордимся</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card portfolio-card-1">
+                    <div class="portfolio-image">
+                        <img src="img/modellavka.webp" alt="Модельная Лавка — интернет-магазин" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Модельная Лавка</h3>
+                        <p class="portfolio-description">Интернет-магазин на Yii с адаптивным каталогом и интеграцией платёжных сервисов.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Yii</span>
+                            <span class="tech-small">PHP</span>
+                            <span class="tech-small">MySQL</span>
+                            <span class="tech-small">Vue.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-2">
+                    <div class="portfolio-image">
+                        <img src="img/ritmonexx.webp" alt="Ritmonexx — интернет-магазин" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Ritmonexx</h3>
+                        <p class="portfolio-description">Интернет-магазин на Yii с адаптивным каталогом и интеграцией платёжных сервисов.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Yii</span>
+                            <span class="tech-small">PHP</span>
+                            <span class="tech-small">MySQL</span>
+                            <span class="tech-small">Vue.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-3">
+                    <div class="portfolio-image">
+                        <img src="img/modimio.webp" alt="Модимио — сайт издательства" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Модимио</h3>
+                        <p class="portfolio-description">Сайт издательства с каталогом изданий и адаптивными страницами на Yii.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Yii</span>
+                            <span class="tech-small">PHP</span>
+                            <span class="tech-small">MySQL</span>
+                            <span class="tech-small">Vue.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-4">
+                    <div class="portfolio-image">
+                        <img src="img/scalebay.webp" alt="Scalebay — интернет-аукцион" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Scalebay</h3>
+                        <p class="portfolio-description">Интернет-аукцион.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Node.js</span>
+                            <span class="tech-small">WebSocket</span>
+                            <span class="tech-small">MySQL</span>
+                            <span class="tech-small">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-5">
+                    <div class="portfolio-image">
+                        <img src="img/moneti.webp" alt="Монеты Российской Империи — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Монеты Российской Империи</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-6">
+                    <div class="portfolio-image">
+                        <img src="img/kamni.webp" alt="Камни и Минералы — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Камни и Минералы</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="img/kremliikreposty.webp" alt="Кремли и крепости — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Кремли и крепости</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="img/puteshestvinniki.webp" alt="Первооткрыватели и путешественники России — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Первооткрыватели и путешественники России</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="img/ysadby.webp" alt="Усадьбы России — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Усадьбы России</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="img/autobusy.webp" alt="Наши Автобусы — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Наши Автобусы</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-7">
+                    <div class="portfolio-image">
+                        <img src="img/tanki.webp" alt="Наши Танки — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Наши Танки</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-8">
+                    <div class="portfolio-image">
+                        <img src="img/gryzoviki.webp" alt="Наши Грузовики — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Наши Грузовики</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-9">
+                    <div class="portfolio-image">
+                        <img src="img/motocilty.webp" alt="Наши Мотоциклы — landing page" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Наши Мотоциклы</h3>
+                        <p class="portfolio-description">Landing page.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Vue.js</span>
+                            <span class="tech-small">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card portfolio-card-10">
+                    <div class="portfolio-image">
+                        <img src="img/sklad.webp" alt="MWarehouse — WMS система и мобильное приложение для ТСД" />
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">MWarehouse</h3>
+                        <p class="portfolio-description">WMS-система и мобильное приложение для ТСД.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-small">Yii2</span>
+                            <span class="tech-small">Java</span>
+                            <span class="tech-small">Android</span>
+                            <span class="tech-small">MySQL</span>
+                            <span class="tech-small">Barcode</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-header">
+                    <h2 class="section-title">Давайте сотрудничать</h2>
+                    <p class="section-subtitle">
+                        Расскажите о вашем проекте, и мы поможем его реализовать
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                class="form-input"
+                                placeholder="Иван Петров"
+                                required
+                                minlength="2"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-input"
+                                placeholder="+7 (930) 330-7800"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="ваш@email.com"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Опишите ваш проект</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-textarea"
+                                placeholder="Расскажите о том, что вам нужно..."
+                                required
+                                minlength="10"
+                                rows="5"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input
+                                type="checkbox"
+                                id="privacy"
+                                name="privacy"
+                                class="form-checkbox"
+                                required
+                            />
+                            <label for="privacy" class="checkbox-label">
+                                Я согласен(а) с обработкой персональных данных
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="button button-primary button-large">
+                                Отправить заявку
+                            </button>
+                        </div>
+
+                        <div class="form-message" id="formMessage" style="display: none;"></div>
+                    </form>
+
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">Контактная информация</h3>
+                        
+                        <div class="contact-info-item">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:itkostoma@yandex.ru" class="contact-link">
+                                itkostoma@yandex.ru
+                            </a>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-label">Телефон</span>
+                            <a href="tel:+79303307800" class="contact-link">
+                                +7 (930) 330-7800
+                            </a>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-label">Часы работы</span>
+                            <p class="contact-text">
+                                Пн-Пт: 08:00 - 17:00 МСК<br>
+                                Сб-Вс: По договоренности
+                            </p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-label">Адрес</span>
+                            <p class="contact-text">
+                                156012, Костромская область, <br>
+                                г. Кострома, Костромская ул., д. 97б,<br>
+                                помещ. 1 ком. 8,9
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Услуги</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Веб-разработка</a></li>
+                        <li><a href="#services">Мобильные приложения</a></li>
+                        <li><a href="#services">UX/UI дизайн</a></li>
+                        <li><a href="#services">Техподдержка</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-section footer-section-legal">
+                <h4 class="footer-title">Юридическая информация</h4>
+                <ul class="footer-links footer-links-legal">
+                    <li><strong>ИНН:</strong> <span>4400010385</span></li>
+                    <li><strong>ОКВЭД:</strong> <span>62.01</span></li>
+                    <li><strong>ОКВЭД ИТ:</strong> <span>1.01</span></li>
+                    <li><strong>Вид деятельности в области Информационных технологий:</strong> <span>Разработка программного обеспечения</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ФОРТРЕСС ХИЛЛ" 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
